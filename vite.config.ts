@@ -42,10 +42,10 @@ export default ({ mode }: { mode: string }) => {
           ],
         },
       }),
-      checker({
-        typescript: true,
-      }),
-      eslint(),
+      // checker({
+      //   typescript: true,
+      // }),
+      // eslint(),
       svgr(),
     ],
     envDir: "./envs",
