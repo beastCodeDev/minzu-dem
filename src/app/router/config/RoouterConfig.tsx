@@ -1,15 +1,15 @@
 import { RouteProps } from "react-router-dom";
 import { Home } from "../../../pages/home";
 
-enum AppRouters {
+enum AppRoutes {
   Home = "home",
 }
-export const Path: Record<AppRouters, string> = {
-  [AppRouters.Home]: "/",
+export const routePaths: Record<AppRoutes, string> = {
+  [AppRoutes.Home]: "/",
 };
-export const RouterConfig: Record<AppRouters, RouteProps> = {
-  [AppRouters.Home]: {
-    path: Path.home,
+export const routerConfig: Record<AppRoutes, RouteProps> = {
+  [AppRoutes.Home]: {
+    path: routePaths.home,
     element: <Home />,
   },
 };
