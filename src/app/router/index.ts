@@ -1,2 +1,2 @@
-import AppRouter from "./ui/AppRoutes";
-export {AppRouter}
+import AppRouter from "./ui/AppRouter";
+export { AppRouter }
