@@ -1,2 +1,3 @@
-import Home from './ui/Home'
-export {Home}
+import Home from "./ui/Home"
+
+export { Home }
