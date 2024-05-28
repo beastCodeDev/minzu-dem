@@ -1,3 +1,3 @@
-import { PaintingCard } from "./PaintingCard";
+import { PaintingCard } from "./Painting"
 
 export { PaintingCard }
