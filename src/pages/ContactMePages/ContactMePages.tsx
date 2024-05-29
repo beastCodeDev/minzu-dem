@@ -1,5 +1,5 @@
 import React from 'react';
-import ContactMeWidget from '../../widgets/ContactMeWidgets/ContactME.Widget';
+import ContactMeWidget from '../../widgets/ContactMeWidgets/ContactMeWidget';
 
 const ContactMePages = () => {
     return (
