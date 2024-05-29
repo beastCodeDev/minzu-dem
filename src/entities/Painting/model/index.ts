@@ -1,3 +1,3 @@
-import { TypeCard } from './type'
+import { Painting } from './type'
 
-export type { TypeCard }
+export type { Painting }

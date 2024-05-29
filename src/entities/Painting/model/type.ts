@@ -1,4 +1,4 @@
-export type TypeCard = {
+export type Painting = {
     mainImage: string,
     title: string,
     createdYear: number,

@@ -1,3 +1,3 @@
-import PaintingCard from "./ui/paintingCard/PaintingCard"
+import PaintingCard from "./ui/paintingCard/paintingCard"
 
 export { PaintingCard }

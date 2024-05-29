@@ -1,6 +1,6 @@
-import { TypeCard } from "~entities/Painting/model";
+import { Painting } from "~entities/Painting/model";
 
-const PaintingCard: React.FC<TypeCard> = ({ mainImage, title, createdYear, size }) => {
+const PaintingCard: React.FC<Painting> = ({ mainImage, title, createdYear, size }) => {
     return (
         <div className="w-64 max-[475px]:w-32">
             <a href="#" className="block items-center">
