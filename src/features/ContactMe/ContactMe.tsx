@@ -21,9 +21,6 @@ const formItemLayout = {
 
 
 const ContactMe: React.FC = () => (
-
-  
-  
     <Form className='grid gap-4' {...formItemLayout} variant="filled" >
       <div className='flex justify-between mr-10 ml-10'>
         <div className='flex text-justify'>

@@ -1,10 +1,11 @@
-import ContactMePages from '../pages/ContactMePages/ContactMePages';
 import './styles/App.css';
+import { AppRouter } from './router';
+import '~app/styles/App.css';
 
 function App() {
   return (
     <>
-    <ContactMePages />
+      <AppRouter />
     </>
   );
 }
