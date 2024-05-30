@@ -1,9 +1,9 @@
-import ContactMe from '../../features';
+import ContactForm from '../../features';
 
 const ContactMeWidget = () => {
     return (
         <div>
-            <ContactMe />
+            <ContactForm />
         </div>
     );
 }
