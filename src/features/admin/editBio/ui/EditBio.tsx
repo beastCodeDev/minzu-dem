@@ -1,11 +1,11 @@
 import React, { useState, useRef } from 'react';
 import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css'; 
-import { modules } from '../config/index'; 
-import { UploadDragger } from '~entities/uploadDragger';
+import 'react-quill/dist/quill.snow.css';
+import { modules } from '../config/index';
+import { UploadDragger } from './uploadDragger';
 
-const EditBio: React.FC = () => {
-  const [text, setText] = useState<string>('');//в text хранится текст с Html тегами, вот пример:<h1>Hello world!</h1> 
+const EditBioView: React.FC = () => {
+  const [text, setText] = useState<string>(''); //в text хранится текст с Html тегами, вот пример:<h1>Hello world!</h1>
   const quillRef = useRef<ReactQuill | null>(null);
 
   const handleChange = (value: string) => {
@@ -13,11 +13,11 @@ const EditBio: React.FC = () => {
   };
 
   return (
-    <div className='flex justify-between items-center gap-5 px-auto m-10 '>
+    <div className="flex justify-between items-center gap-5 px-auto m-10 ">
       <ReactQuill
         ref={quillRef}
-        className='w-2/3'
-        style={{height:'70vh'}}
+        className="w-2/3"
+        style={{ height: '70vh' }}
         value={text}
         onChange={handleChange}
         modules={modules}
@@ -25,6 +25,6 @@ const EditBio: React.FC = () => {
       <UploadDragger />
     </div>
   );
-}
+};
 
-export default EditBio;
+export default EditBioView;

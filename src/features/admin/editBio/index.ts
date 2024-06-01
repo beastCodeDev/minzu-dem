@@ -1,2 +1,2 @@
-import EditBio from "./ui/EditBio";
-export {EditBio}
+import EditBioView from './ui/EditBio';
+export { EditBioView };

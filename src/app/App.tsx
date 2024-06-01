@@ -1,20 +1,12 @@
-
-import { Home } from '../pages/ui/home/Home';
+import { Header } from '~widgets/site/header';
+import { AppRouter } from './providers/router';
 import './styles/App.css';
-import { AppRouter } from './router';
-import '~app/styles/App.css';
-
-import { AppRouter } from './router';
-
-import { PersonalInfo } from '~pages/personalInformation/index';
-
 
 function App() {
   return (
     <>
-
+      <Header />
       <AppRouter />
-
     </>
   );
 }
