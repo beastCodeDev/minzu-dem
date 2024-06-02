@@ -1,1 +1,16 @@
-{}
+{
+    "hello": "Hello",
+    "contact_us_message": "You're welcome to contact us with any inquiry. For questions regarding your order, please include your order number.",
+    "name": "Name*",
+    "email": "Email*",
+    "phone_number": "Phone number*",
+    "message": "Message*",
+    "send": "Send",
+    "paintings": "PAINTINGS",
+    "bio": "BIO",
+    "contact_me": "CONTACT ME",
+    "return_policy": "Return & Refund Policy",
+    "terms_of_service": "Terms of Service",
+    "developed_by": "© 2024, Minzu Dem Developed by qameious"
+  }
+  

@@ -1,6 +1,8 @@
 import { Button, Form, Input, Tooltip } from 'antd';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
+import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 const formItemLayout = {
   labelCol: {
@@ -21,18 +23,24 @@ const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
 
   return (
-    <div className="flex justify-end items-center space-x-4 mr-4 md:mr-20 mt-4 md:mt-10">
+    <div className="flex justify-end items-center space-x-4 mr-5 mt-3">
       <span
-        className={cursor-pointer ${i18n.language === 'en' ? 'text-blue-500' : 'text-gray-500'}}
+        className={`cursor-pointer ${i18n.language === 'en' ? 'text-blue-500' : 'text-gray-500'}`}
         onClick={() => changeLanguage('en')}
       >
         English
       </span>
       <span
-        className={cursor-pointer ${i18n.language === 'ru' ? 'text-blue-500' : 'text-gray-500'}}
+        className={`cursor-pointer ${i18n.language === 'ru' ? 'text-blue-500' : 'text-gray-500'}`}
         onClick={() => changeLanguage('ru')}
       >
         Русский
+      </span>
+      <span
+        className={`cursor-pointer ${i18n.language === 'kg' ? 'text-blue-500' : 'text-gray-500'}`}
+        onClick={() => changeLanguage('kg')}
+      >
+        Кыргызча
       </span>
     </div>
   );
@@ -40,9 +48,41 @@ const LanguageSwitcher = () => {
 
 const ContactForm = () => {
   const { t } = useTranslation();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [number, setNumber] = useState('')
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const serviceId = 'service_aewipmj';
+    const templateId = 'template_bwef55b';
+    const publicKey = '7OTl34pNBHT0rVHL9';
+
+    const templateParams = {
+      from_name: name,
+      from_email: email,
+      to_name: 'Minzu-dem',
+      message: message,
+      number: number
+    };
+
+    emailjs.send(serviceId, templateId, templateParams, publicKey)
+      .then((response) => {
+        console.log('Email sent successfully', response);
+        setName('');
+        setEmail('');
+        setMessage('');
+        setNumber('');
+      })
+      .catch((error) => {
+        console.error('Error sending email:', error);
+      });
+  };
 
   return (
-    <Form className='grid gap-4' {...formItemLayout} variant="filled">
+    <Form onSubmitCapture={handleSubmit} className='grid gap-4' {...formItemLayout} variant="filled">
       <LanguageSwitcher />
       <div className='flex flex-col md:flex-row justify-between mr-4 md:mr-10 ml-4 md:ml-10 text-xl'>
         <div className='flex text-justify mb-4 md:mb-0'>
@@ -68,6 +108,8 @@ const ContactForm = () => {
             <Input
               className='w-full h-11 border border-black bg-white rounded-none p-2'
               id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               suffix={<Tooltip title="Extra information" />}
             />
           </div>
@@ -77,6 +119,8 @@ const ContactForm = () => {
               className='w-full h-11 border-black bg-white rounded-none'
               id="email"
               type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               suffix={<Tooltip title="Extra information" />}
             />
           </div>
@@ -87,13 +131,20 @@ const ContactForm = () => {
           <Input
             className='w-full h-11 border-black bg-white rounded-none'
             type="number"
+            value={number}
+
             id='number'
             suffix={<Tooltip title="Extra information" />}
           />
         </div>
-        <Form.Item className='mt-6' rules={[{ required: true, message: 'Please input!' }]}>
+        <Form.Item className='mt-6' rules={[{ required: true }]}>
           <label className="block mb-1 text-[16px] md:text-[17px]" htmlFor="message">{t('message')}</label>
-          <Input.TextArea className='border-black bg-white rounded-none' id="message" />
+          <Input.TextArea
+            className='border-black bg-white rounded-none'
+            id="message"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          />
         </Form.Item>
 
         <Form.Item className='flex justify-center md:justify-start mt-6' wrapperCol={{ offset: 0, span: 16 }}>
@@ -101,7 +152,7 @@ const ContactForm = () => {
         </Form.Item>
       </div>
 
-<div className='mt-20 md:mt-40'>
+      <div className='mt-20 md:mt-40'>
         <div className='h-px w-[98%] bg-black my-4 ml-[1%]'></div>
         <div className='flex justify-between w-10 absolute left-1/2 transform -translate-x-1/2'>
           <img className='w-6' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx8U0binObZ-QCRs4vRGi1WTWFyqCXWweyvw&s" alt="External link icon" />
