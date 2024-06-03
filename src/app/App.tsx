@@ -1,10 +1,12 @@
-import { PersonalInfo } from '~pages/personalInformation/index';
+import { AppRouter } from './router';
 import '~app/styles/App.css';
 
 function App() {
   return (
     <>
-      <PersonalInfo />
+
+      <AppRouter />
+
     </>
   );
 }
