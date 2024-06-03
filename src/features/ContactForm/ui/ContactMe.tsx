@@ -35,13 +35,7 @@ const LanguageSwitcher = () => {
         onClick={() => changeLanguage('ru')}
       >
         Русский
-      </span>
-      <span
-        className={`cursor-pointer ${i18n.language === 'kg' ? 'text-blue-500' : 'text-gray-500'}`}
-        onClick={() => changeLanguage('kg')}
-      >
-        Кыргызча
-      </span>
+      </span>      
     </div>
   );
 };
@@ -127,7 +121,7 @@ const ContactForm = () => {
         </div>
 
         <div>
-          <label className="block mb-1" htmlFor="number">{t('phone_number')}</label>
+          <label className="block mb-1 mt-5" htmlFor="number">{t('phone_number')}</label>
           <Input
             className='w-full h-11 border-black bg-white rounded-none'
             type="number"
@@ -166,7 +160,7 @@ const ContactForm = () => {
             </a>
             <a href="https://minzu-dem.vercel.app/pages/return-and-refund-policy" className='mt-2 md:mt-0 md:ml-4'>
               <h1>{t('terms_of_service')}</h1>
-            </a>
+            </a>  
           </div>
           <h1 className='mt-4 md:mt-0 mr-4 md:mr-16 text-[13px]'>{t('developed_by')}</h1>
         </div>
