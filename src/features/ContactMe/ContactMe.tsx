@@ -5,7 +5,6 @@ import {
   Input,
   Tooltip
 } from 'antd';
-// import styles from './commission-request-window.scss'; 
 
 const formItemLayout = {
   labelCol: {

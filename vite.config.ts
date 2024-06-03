@@ -1,20 +1,20 @@
 /// <reference types="vitest" />
 
-import path from "path";
-import fs from "fs";
+import path from 'path';
+import fs from 'fs';
 
-import { defineConfig, loadEnv } from "vite";
+import { defineConfig, loadEnv } from 'vite';
 
-import react from "@vitejs/plugin-react";
+import react from '@vitejs/plugin-react';
 // import eslint from "vite-plugin-eslint";
-import svgr from "vite-plugin-svgr";
+import svgr from 'vite-plugin-svgr';
 // import checker from "vite-plugin-eslint";
-import jotaiDebugLabel from "jotai/babel/plugin-debug-label";
-import jotaiReactRefresh from "jotai/babel/plugin-react-refresh";
+import jotaiDebugLabel from 'jotai/babel/plugin-debug-label';
+import jotaiReactRefresh from 'jotai/babel/plugin-react-refresh';
 
 const rootPath = __dirname;
 
-const basePath = path.resolve(rootPath, "./src");
+const basePath = path.resolve(rootPath, './src');
 const srcDirs = fs
   .readdirSync(basePath)
   .filter((name) => fs.lstatSync(path.join(basePath, name)).isDirectory());
@@ -22,13 +22,13 @@ const srcDirs = fs
 const srcAliases = srcDirs.reduce(
   (acc: any, name: any) => ({
     ...acc,
-    [`~${name}`]: `${path.resolve(rootPath, "src")}/${name}`,
+    [`~${name}`]: `${path.resolve(rootPath, 'src')}/${name}`,
   }),
-  {}
+  {},
 );
 
 export default ({ mode }: { mode: string }) => {
-  const viteEnv = loadEnv(mode, "./envs");
+  const viteEnv = loadEnv(mode, './envs');
   process.env = { ...process.env, ...viteEnv };
 
   return defineConfig({
@@ -36,7 +36,7 @@ export default ({ mode }: { mode: string }) => {
       react({
         babel: {
           plugins: [
-            "@emotion/babel-plugin",
+            '@emotion/babel-plugin',
             jotaiDebugLabel,
             jotaiReactRefresh,
           ],
@@ -48,7 +48,7 @@ export default ({ mode }: { mode: string }) => {
       // eslint(),
       svgr(),
     ],
-    envDir: "./envs",
+    envDir: './envs',
     resolve: {
       alias: {
         ...srcAliases,
@@ -60,8 +60,8 @@ export default ({ mode }: { mode: string }) => {
     },
     test: {
       globals: true,
-      environment: "jsdom",
-      setupFiles: "./src/shared/lib/test/setup.ts",
+      environment: 'jsdom',
+      setupFiles: './src/shared/lib/test/setup.ts',
     },
   });
 };
