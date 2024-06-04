@@ -1,1 +1,9 @@
-{}
+{
+  "main": {
+    "personalInfo": "персональная информация",
+    "email": "почта:",
+    "push notification": "уведомления:",
+    "nickname": "имя:",
+    "save": "сохранить"
+  }
+}
