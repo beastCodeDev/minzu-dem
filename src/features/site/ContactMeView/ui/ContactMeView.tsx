@@ -24,7 +24,7 @@ const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
 
   return (
-    <div className="flex justify-end items-center space-x-4 mr-5 mt-3">
+    <div className="flex justify-end items-center space-x-4 mr-10 mt-3">
       <span
         className={`cursor-pointer ${i18n.language === 'en' ? 'text-blue-500' : 'text-gray-500'}`}
         onClick={() => changeLanguage('en')}
