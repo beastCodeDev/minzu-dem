@@ -10,6 +10,7 @@ export const Navbar = () => {
 
   const handleResize = () => {
     setWindowWidth(window.innerWidth);
+
     if (window.innerWidth >= 705) {
       setMenuOpen(true);
     } else {
@@ -19,15 +20,17 @@ export const Navbar = () => {
 
   useEffect(() => {
     window.addEventListener('resize', handleResize);
+
     return () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
   return (
     <header className="flex items-center justify-between max-[475px]:mt-[-20px]">
       <a
         className="flex items-center max-[475px]:justify-between max-[475px]:w-[62%] "
-        href=""
+        href="/"
       >
         <img
           className="w-[130px] max-[475px]:w-[70px]"
@@ -42,19 +45,19 @@ export const Navbar = () => {
         >
           <a
             className="text-xl uppercase hover:border-b-2 hover:border-black"
-            href="#"
+            href="/"
           >
             Paintings
           </a>
           <a
             className="text-xl uppercase hover:border-b-2 hover:border-black"
-            href="#"
+            href="/"
           >
             Bio
           </a>
           <a
             className="text-xl uppercase hover:border-b-2 hover:border-black"
-            href="#"
+            href="/"
           >
             Contact me
           </a>

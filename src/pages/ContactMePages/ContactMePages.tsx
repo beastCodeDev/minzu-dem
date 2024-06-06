@@ -1,12 +1,11 @@
-import React from 'react';
-import ContactMeWidget from '../../widgets/ContactMeWidgets/ContactMeWidget';
+import { ContactMe } from '~widgets/site/contactMe';
 
-const ContactMePages = () => {
-    return (
-        <div>
-            <ContactMeWidget />
-        </div>
-    );
-}
+const ContactMePage = () => {
+  return (
+    <div>
+      <ContactMe />
+    </div>
+  );
+};
 
-export default ContactMePages;
+export default ContactMePage;

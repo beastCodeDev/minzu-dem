@@ -1,4 +1,5 @@
 import { useAtomValue, useSetAtom } from 'jotai';
+
 import { paintingsAtom, setPaintingsAtom } from './atom';
 
 export const usePaintings = () => {
