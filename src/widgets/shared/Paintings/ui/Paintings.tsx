@@ -1,4 +1,4 @@
-import { PaintingsList } from "~entities/painting";
+import { PaintingsList } from "~entities/Painting";
 
 const Paintings = () => {
   return <PaintingsList />;

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
+  const [currentPage, setCurrentPage] = useState(""); 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
@@ -23,8 +23,14 @@ export const Navbar = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  useEffect(() => {
+    setCurrentPage(window.location.pathname);
+  }, []);
+
+
   return (
-    <header className="flex items-center justify-between max-[475px]:mt-[-20px]">
+    <header className="flex items-center justify-between mx-10 max-[475px]:mt-[20px]">
       <a
         className="flex items-center max-[475px]:justify-between max-[475px]:w-[62%] "
         href=""
@@ -34,27 +40,27 @@ export const Navbar = () => {
           src="https://minzu-dem.vercel.app/logo.svg"
           alt="logo"
         />
-        <h1 className="uppercase text-2xl">Minzu 1</h1>
+        <h1 className="uppercase text-2xl">Minzu </h1>
       </a>
-      <div className="duration-500 md:static absolute bg-white md:min-h-fit min-h-[30vh] left-0 top-[25%] md:w-auto w-full px-5 max-[475px]:top-[18%]">
+      <div className={`duration-500 md:static absolute bg-white md:min-h-fit min-h-[30vh] left-0 top-[25%] md:w-auto w-full px-5 max-[475px]:top-[18%] flex justify-center max-[475px]:${!menuOpen && 'hidden'}`}>
         <nav
-          className={`flex md:flex-row flex-col md:items-center md:gap-4 gap-3 ${menuOpen ? 'block' : 'hidden'}`}
+          className={`flex md:flex-row flex-col md:items-center md:gap-4 gap-3 max-[475px]:justify-center ${menuOpen || windowWidth >= 705 ? 'block' : 'hidden'}`}
         >
           <a
-            className="text-xl uppercase hover:border-b-2 hover:border-black"
-            href="#"
+            className={`text-xl uppercase hover:border-b-2 hover:border-black text-center ${currentPage === "/paintings" ? 'border-b-2 border-black' : ''}`}
+            href="/paintings"
           >
             Paintings
           </a>
           <a
-            className="text-xl uppercase hover:border-b-2 hover:border-black"
-            href="#"
+            className={`text-xl uppercase hover:border-b-2 hover:border-black text-center  ${currentPage === "/bio" ? 'border-b-2 border-black' : ''}`}
+            href="/bio"
           >
             Bio
           </a>
           <a
-            className="text-xl uppercase hover:border-b-2 hover:border-black"
-            href="#"
+            className={`text-xl uppercase hover:border-b-2 hover:border-black text-center  ${currentPage === "/contact" ? 'border-b-2 border-black' : ''}`}
+            href="/contact"
           >
             Contact me
           </a>

@@ -3,7 +3,7 @@ import {
   Painting,
   usePaintings,
   useSetPaintings,
-} from '~entities/painting/model';
+} from '~entities/Painting/model';
 import PaintingCard from '../card/paintingCard';
 
 const PaintingsList = () => {
