@@ -21,7 +21,7 @@ const ContactMe: React.FC = () => (
       </div>
       <div className='mt-11'>
         <a href="">PAINTINGS</a>
-        <a className='ml-3 mr-3' href="">BIO</a>
+        <a className='ml-3 mr-3' href="">BIOw</a>
         <a href="">CONTACT ME</a>
       </div>
       <div className='mt-9'>
