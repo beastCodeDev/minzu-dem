@@ -1,8 +1,9 @@
 import Header from '../../../widgets';
 
- export const Home = () => {
-    return (
-       <Header/>
-    );
+export const Home = () => {
+   return (
+      <Header />
+
+   );
 }
 

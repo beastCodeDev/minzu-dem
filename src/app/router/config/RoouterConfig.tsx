@@ -10,13 +10,7 @@ enum AppRoutes {
 export const routePaths: Record<AppRoutes, string> = {
   [AppRoutes.Home]: "/",
   [AppRoutes.AdminBio]: "/admin/bio",
-
-
-enum AppRoutes {
-  Home = "home",
 }
-export const routePaths: Record<AppRoutes, string> = {
-  [AppRoutes.Home]: "/",
 
 export const routerConfig: Record<AppRoutes, RouteProps> = {
   [AppRoutes.Home]: {
