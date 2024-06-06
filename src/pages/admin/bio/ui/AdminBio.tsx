@@ -1,11 +1,11 @@
-import { EditBio } from "~widgets/admin/editBioWidjet"
+import { EditBio } from '~widgets/admin/editBio';
 
 const AdminBio = () => {
   return (
     <>
-      <EditBio/>
+      <EditBio />
     </>
-  )
-}
+  );
+};
 
-export default AdminBio
+export default AdminBio;

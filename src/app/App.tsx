@@ -1,11 +1,11 @@
-import { Footer } from '~widgets/index';
-import { AppRouter } from './router';
 import '~app/styles/App.css';
+import { Header } from '~widgets/site/header';
+import { AppRouter } from './providers/router';
 
 function App() {
   return (
     <>
-      <Footer />
+      <Header />
       <AppRouter />
     </>
   );

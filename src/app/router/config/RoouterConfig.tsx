@@ -1,7 +1,7 @@
 import { RouteProps } from "react-router-dom";
 
 import { AdminBio } from "~pages/admin/bio";
-import { Home } from "~pages/home";
+import Home from "~pages/home/ui/Home";
 
 enum AppRoutes {
   Home = "home",

@@ -1,3 +1,3 @@
-import { Painting } from './type'
-
-export type { Painting }
+export * from './atom';
+export * from './types';
+export * from './usePaintings';
