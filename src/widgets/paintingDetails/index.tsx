@@ -8,7 +8,7 @@ interface PaintingDetailsWidgetProps {
 
 const PaintingDetailsWidget: React.FC<PaintingDetailsWidgetProps> = ({ data }) => {
   if (!data) {
-    return <p>Loading...</p>;
+    return <p>Loading...</p>; 
   }
 
   return (
