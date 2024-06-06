@@ -117,15 +117,15 @@ const ContactForm = () => {
             suffix={<Tooltip title="Extra information" />}
           />
         </div>
-        <Form.Item className='mt-6' rules={[{ required: true }]}>
+        <div className='mt-6 min-h-13'>
           <label className="block mb-1 text-[16px] md:text-[17px]" htmlFor="message">{t('message')}</label>
           <Input.TextArea
-            className='border-black bg-white rounded-none'
+            className='border-black bg-white rounded-none w-full outline-none py-[100px] px-[18px]  border-1 '
             id="message"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
           />
-        </Form.Item>
+        </div>
 
         <Form.Item className='flex justify-center md:justify-start mt-6' wrapperCol={{ offset: 0, span: 16 }}>
           <Button className='bg-[#3a3a3a] h-11 text-lg font-bold rounded-none' type="primary" htmlType="submit">{t('send')}</Button>
