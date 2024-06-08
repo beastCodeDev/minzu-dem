@@ -1,10 +1,13 @@
 import { useEffect, useMemo } from 'react';
+
+import { Painting } from '~entities/Painting/model/types';
+
 import {
-  Painting,
   usePaintings,
   useSetPaintings,
-} from '~entities/painting/model';
-import PaintingCard from '../card/paintingCard';
+} from '~entities/Painting/model/usePaintings';
+
+import { PaintingCard } from '~entities/Painting';
 
 const PaintingsList = () => {
   const paintings = usePaintings();
@@ -33,6 +36,7 @@ const PaintingsList = () => {
       )),
     [paintings],
   );
+
   return <section className="flex flex-wrap gap-6">{renderCards}</section>;
 };
 
