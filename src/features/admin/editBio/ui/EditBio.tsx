@@ -1,11 +1,14 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef, useState } from 'react';
+
 import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
-import { modules } from '../config/index';
+import { modules } from '../config';
+
 import { UploadDragger } from './uploadDragger';
 
+import 'react-quill/dist/quill.snow.css';
+
 const EditBioView: React.FC = () => {
-  const [text, setText] = useState<string>(''); //в text хранится текст с Html тегами, вот пример:<h1>Hello world!</h1>
+  const [text, setText] = useState<string>('');
   const quillRef = useRef<ReactQuill | null>(null);
 
   const handleChange = (value: string) => {

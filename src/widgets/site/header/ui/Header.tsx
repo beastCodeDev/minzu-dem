@@ -1,4 +1,4 @@
-import { Navbar } from "~shared/ui";
+import { Navbar } from '~shared/ui';
 
 export const Header = () => {
   return <Navbar />;

@@ -1,7 +1,8 @@
 import { atom } from 'jotai';
 import { atomWithDefault } from 'jotai/utils';
-import { Painting } from './types';
-import { loadPaingings } from '../api';
+
+import { Painting } from '~entities/Painting/model/types';
+import { loadPaingings } from '~entities/Painting/api/api';
 
 export interface ApiRequest {
   type: 'MH' | 'MES';
@@ -20,7 +21,6 @@ export const setPaintingsAtom = atom<
 
     const response = await loadPaingings();
 
-    console.log(response);
     if (response.data) {
       set(paintingsAtom, response.data);
     }

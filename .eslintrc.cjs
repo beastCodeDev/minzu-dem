@@ -15,7 +15,10 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 12,
+    ecmaFeatures: {
+      experimentalObjectRestSpread: true,
+    },
+    ecmaVersion: 2020,
     sourceType: 'module',
   },
   plugins: ['react'],
