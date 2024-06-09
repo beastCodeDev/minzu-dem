@@ -1,2 +1,3 @@
-import AdminBio from "./ui/AdminBio";
-export { AdminBio }
+import AdminBio from './ui/AdminBio';
+
+export { AdminBio };

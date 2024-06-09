@@ -4,9 +4,11 @@ import path from 'path';
 import fs from 'fs';
 
 import { defineConfig, loadEnv } from 'vite';
+// import ssr from 'vite-plugin-ssr/plugin';
 
 import react from '@vitejs/plugin-react';
 import svgr from 'vite-plugin-svgr';
+import checker from 'vite-plugin-checker';
 import jotaiDebugLabel from 'jotai/babel/plugin-debug-label';
 import jotaiReactRefresh from 'jotai/babel/plugin-react-refresh';
 
@@ -29,6 +31,7 @@ export default ({ mode }: { mode: string }) => {
   const viteEnv = loadEnv(mode, process.cwd());
   process.env = { ...process.env, ...viteEnv };
 
+  // https://vitejs.dev/config/
   return defineConfig({
     plugins: [
       react({
@@ -40,13 +43,21 @@ export default ({ mode }: { mode: string }) => {
           ],
         },
       }),
+      // ssr(),
+      checker({
+        typescript: true,
+      }),
+      // eslint(),
       svgr(),
     ],
     resolve: {
       alias: {
         ...srcAliases,
+        src: path.resolve('src/'),
       },
     },
+    // base: '/accelerator/',
+
     server: {
       port: 3000,
     },

@@ -1,4 +1,4 @@
-import { Painting } from '~entities/Painting/model';
+import { Painting } from '~entities/Painting/model/types';
 
 const PaintingCard: React.FC<Painting> = ({
   mainImage,

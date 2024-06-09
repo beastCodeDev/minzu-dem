@@ -12,31 +12,6 @@ const formItemLayout = {
   },
 };
 
-const changeLanguage = (language: string) => {
-  i18next.changeLanguage(language);
-};
-
-const LanguageSwitcher = () => {
-  const { i18n } = useTranslation();
-
-  return (
-    <div className="flex justify-end items-center space-x-4 mr-10 mt-3">
-      <span
-        className={`cursor-pointer ${i18n.language === 'en' ? 'text-blue-500' : 'text-gray-500'}`}
-        onClick={() => changeLanguage('en')}
-      >
-        English
-      </span>
-      <span
-        className={`cursor-pointer ${i18n.language === 'ru' ? 'text-blue-500' : 'text-gray-500'}`}
-        onClick={() => changeLanguage('ru')}
-      >
-        Русский
-      </span>      
-    </div>
-  );
-};
-
 const ContactForm = () => {
   const { t } = useTranslation();
   const [form] = Form.useForm();
@@ -79,10 +54,9 @@ const ContactForm = () => {
       onFinish={handleSubmit}
       className='grid gap-4 w-100% ml-[15%]'
     >
-      <LanguageSwitcher />
       <p className='my-4 md:w-[80%] lg:w-[80%]'>{t('contactForm.contact_us_message')}</p>
 
-      <div className="flex gap-2 ">
+      <div className="flex gap-2 items-center">
         <Form.Item
           className="w-full mb-0"
           name="name"
@@ -140,4 +114,4 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm;
+export default ContactForm

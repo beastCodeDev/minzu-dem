@@ -1,1 +1,2 @@
-export * from './api';
+export * from '~entities/Painting/api/api';
+export * from '~entities/Painting/api/routes';
