@@ -20,6 +20,9 @@
       "~app": ["./app"],
       "~app/*": ["./app/*"],
 
+      "~public": ["../public"],
+      "~public/*": ["../public/*"],
+
       "~processes": ["./processes"],
       "~processes/*": ["./processes/*"],
 
