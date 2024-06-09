@@ -1,1 +1,9 @@
-{}
+{
+  "personalInfo": {
+    "PI": "Personal information",
+    "save": "Save",
+    "email": "Email",
+    "nick": "Nickname",
+    "pushNotif": "Push notification"
+  }
+}

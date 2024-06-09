@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { SwitchLanguage } from '../switchLanguage';
 
 export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -43,6 +44,7 @@ export const Navbar = () => {
         <nav
           className={`flex md:flex-row flex-col md:items-center md:gap-4 gap-3 ${menuOpen ? 'block' : 'hidden'}`}
         >
+          <SwitchLanguage />
           <a
             className="text-xl uppercase hover:border-b-2 hover:border-black"
             href="/"
