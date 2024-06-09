@@ -1,18 +1,14 @@
-
 import { Button, Form, Input, Tooltip } from 'antd';
 import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
-import { useState } from 'react';
 import emailjs from '@emailjs/browser';
+import i18next from 'i18next';
 
 const formItemLayout = {
   labelCol: {
     xs: { span: 24 },
-    sm: { span: 6 },
   },
   wrapperCol: {
     xs: { span: 24 },
-    sm: { span: 14 },
   },
 };
 
@@ -43,96 +39,103 @@ const LanguageSwitcher = () => {
 
 const ContactForm = () => {
   const { t } = useTranslation();
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-  const [number, setNumber] = useState('')
+  const [form] = Form.useForm();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = async (values: any) => {
+    const serviceId = import.meta.env.VITE_SERVICE_ID;
+    const templateId = import.meta.env.VITE_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_PUBLIC_KEY;
 
-    const serviceId = 'service_aewipmj';
-    const templateId = 'template_bwef55b';
-    const publicKey = '7OTl34pNBHT0rVHL9';
+    console.log('Service ID:', serviceId);
+    console.log('Template ID:', templateId);
+    console.log('Public Key:', publicKey);
+
+    if (!serviceId || !templateId || !publicKey) {
+      console.error('Error: Environment variables are not set correctly.');
+      return;
+    }
 
     const templateParams = {
-      from_name: name,
-      from_email: email,
+      from_name: values.name,
+      from_email: values.email,
       to_name: 'Minzu-dem',
-      message: message,
-      number: number
+      message: values.message,
+      number: values.number,
     };
 
-    emailjs.send(serviceId, templateId, templateParams, publicKey)
-      .then((response) => {
-        console.log('Email sent successfully', response);
-        setName('');
-        setEmail('');
-        setMessage('');
-        setNumber('');
-      })
-      .catch((error) => {
-        console.error('Error sending email:', error);
-      });
+    try {
+      const response = await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      console.log('Email sent successfully', response);
+      form.resetFields();
+    } catch (error) {
+      console.error('Error sending email:', error);
+    }
   };
 
   return (
-    <Form onSubmitCapture={handleSubmit} className='grid gap-4' {...formItemLayout} variant="filled">
+    <Form
+      {...formItemLayout}
+      form={form}
+      onFinish={handleSubmit}
+      className='grid gap-4 w-100% ml-[15%]'
+    >
       <LanguageSwitcher />
+      <p className='my-4 md:w-[80%] lg:w-[80%]'>{t('contactForm.contact_us_message')}</p>
 
-      <div className='mx-4 md:mx-[15%] text-[16px] md:text-[17px]'>
-        
-        <p className=' my-4 md:w-[80%] lg:w[80%]'>{t('contact_us_message')}</p>
-        <div className='mt-10 grid grid-cols-1 md:grid-cols-2 gap-4'>
-          <div>
-            <label className="block mb-1 mt-5 md:shrink-3" htmlFor="name">{t('name')}</label>
-            <Input
-              className='w-full h-11 border border-black bg-white rounded-none p-2'
-              id="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              suffix={<Tooltip title="Extra information" />}
-            />
-          </div>
-          <div>
-            <label className="block mb-1 mt-5" htmlFor="email">{t('email')}</label>
-            <Input
-              className='w-full h-11 border-black bg-white rounded-none'
-              id="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              suffix={<Tooltip title="Extra information" />}
-            />
-          </div>
-        </div>
-<div>
-          <label className="block mb-1 mt-5" htmlFor="number">{t('phone_number')}</label>
+      <div className="flex gap-2 ">
+        <Form.Item
+          className="w-full mb-0"
+          name="name"
+           label={t('contactForm.name')}
+          labelCol={{ span: 24 }}
+        >
           <Input
-            className='w-full h-11 border-black bg-white rounded-none'
-            type="number"
-            value={number}
-
-            id='number'
+            className="w-[62%] h-11 border border-black bg-white  rounded-none p-2"
             suffix={<Tooltip title="Extra information" />}
           />
-        </div>
-        <div className='mt-6 min-h-13'>
-          <label className="block mb-1 text-[16px] md:text-[17px]" htmlFor="message">{t('message')}</label>
-          <Input.TextArea
-            className='border-black bg-white rounded-none w-full outline-none py-[100px] px-[18px]  border-1 '
-            id="message"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
+        </Form.Item>
+        <Form.Item
+          name="email"
+          label={t('contactForm.email')}
+          labelCol={{ span: 24 }}
+          className="w-full mb-0"
+        >
+          <Input
+             className="w-[62%] h-11 border border-black bg-white  rounded-none p-2"
+            suffix={<Tooltip title="Extra information" />}
           />
-        </div>
-
-        <Form.Item className='flex justify-center md:justify-start mt-6' wrapperCol={{ offset: 0, span: 16 }}>
-          <Button className='bg-[#3a3a3a] h-11 text-lg font-bold rounded-none' type="primary" htmlType="submit">{t('send')}</Button>
         </Form.Item>
       </div>
-
-    
+      <Form.Item
+        name="number"
+        label={t('contactForm.phone_number')}
+        labelCol={{ span: 24 }}
+        className="w-[90%] mb-0"
+      >
+        <Input
+           className="w-[90%] h-11 border border-black bg-white  rounded-none p-2"
+          suffix={<Tooltip title="Extra information" />}
+        />
+      </Form.Item>
+      <Form.Item
+        name="message"
+        label={t('contactForm.message')}
+        labelCol={{ span: 24 }}
+        className="w-[90%] mb-0"
+      >
+        <Input.TextArea
+          className="w-[90%] border border-black bg-white round ed-none p-2"
+          rows={8}
+        />
+      </Form.Item>
+      <Form.Item
+        className='fl[90%]ustify-center md:justify-start mt-6  lg:justify-center'
+        wrapperCol={{ offset: 0, span: 16 }}
+      >
+        <Button type="primary" htmlType="submit">
+          {t('contactForm.send')}
+        </Button>
+      </Form.Item>
     </Form>
   );
 };

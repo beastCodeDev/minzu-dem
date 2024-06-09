@@ -6,9 +6,7 @@ import fs from 'fs';
 import { defineConfig, loadEnv } from 'vite';
 
 import react from '@vitejs/plugin-react';
-// import eslint from "vite-plugin-eslint";
 import svgr from 'vite-plugin-svgr';
-// import checker from "vite-plugin-eslint";
 import jotaiDebugLabel from 'jotai/babel/plugin-debug-label';
 import jotaiReactRefresh from 'jotai/babel/plugin-react-refresh';
 
@@ -28,7 +26,7 @@ const srcAliases = srcDirs.reduce(
 );
 
 export default ({ mode }: { mode: string }) => {
-  const viteEnv = loadEnv(mode, './envs');
+  const viteEnv = loadEnv(mode, process.cwd());
   process.env = { ...process.env, ...viteEnv };
 
   return defineConfig({
@@ -42,19 +40,13 @@ export default ({ mode }: { mode: string }) => {
           ],
         },
       }),
-      // checker({
-      //   typescript: true,
-      // }),
-      // eslint(),
       svgr(),
     ],
-    envDir: './envs',
     resolve: {
       alias: {
         ...srcAliases,
       },
     },
-
     server: {
       port: 3000,
     },
