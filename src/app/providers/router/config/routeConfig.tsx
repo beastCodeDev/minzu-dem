@@ -11,7 +11,9 @@ enum AppRoutes {
   AdminBio = 'adminBio',
   AdminPaintings = 'adminPaintings',
   ContactForm = 'contactForm',
+
   Bio = 'bio',
+
 }
 export const routePaths: Record<AppRoutes, string> = {
   [AppRoutes.Home]: '/',
