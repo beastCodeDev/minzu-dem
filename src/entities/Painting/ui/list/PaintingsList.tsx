@@ -9,6 +9,7 @@ import {
 
 import { PaintingCard } from '~entities/Painting';
 
+
 const PaintingsList = () => {
   const paintings = usePaintings();
   const setPaintings = useSetPaintings();
