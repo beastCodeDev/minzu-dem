@@ -1,38 +1,61 @@
-import { Button, Input, Checkbox } from 'antd';
+import { Input, Button, Checkbox } from 'antd';
+import { useTranslation } from 'react-i18next';
 
-const PersonalInfo = () => {
+export default function PersonalInfo() {
+  const { t } = useTranslation();
+
   return (
-    <>
-      <nav>personalInformation</nav>
-      <br />
-      <br />
-      <main>
-        <div className="flex justify-around">
+    <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+          {t('personalInfo.PI')}
+        </h2>
+      </div>
+
+      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <form className="space-y-6" action="#" method="POST">
           <div>
-            <label className="text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
-              email:
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium leading-6 text-gray-900"
+            >
+              {t('personalInfo.email')}
             </label>
-            <Input />
-            <br />
-            <div className="mt-32">
-              <label className="text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
-                push notification
-              </label>
-              <Checkbox />
+            <div className="mt-2">
+              <Input
+                name="email"
+                type="email"
+                autoComplete="email"
+                required
+                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
             </div>
           </div>
           <div>
-            <label className="text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
-              nickname:
+            <label className="block text-sm font-medium leading-6 text-gray-900">
+              {t('personalInfo.nick')}
             </label>
-            <Input />
+            <div className="mt-2">
+              <Input
+                name="text"
+                type="text"
+                required
+                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
           </div>
-        </div>
-      </main>
-      <div className="ml-28">
-        <Button>Save</Button>
+          <div className="flex items-center justify-between">
+            <label className="block text-sm font-medium leading-6 text-gray-900">
+              {t('personalInfo.pushNotif')} <Checkbox className="pl-24" />
+            </label>
+          </div>
+          <div>
+            <Button className="mt-12 flex w-full justify-center rounded-md bg-indigo-600 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+              {t('personalInfo.save')}
+            </Button>
+          </div>
+        </form>
       </div>
-    </>
+    </div>
   );
-};
-export default PersonalInfo;
+}

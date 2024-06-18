@@ -1,3 +1,7 @@
+import { Navbar } from './navbar/Navbar';
 import { Navigation } from './navigation/Navigation';
+import { SwitchLanguage } from './switchLanguage';
 
-export default Navigation;
+export { Navbar };
+export { SwitchLanguage };
+export { Navigation };
